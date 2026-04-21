@@ -2,21 +2,41 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { SectionHeader } from "./Skills";
 
-type TrustItem =
-  | { kind: "logo"; name: string }
-  | { kind: "creator"; name: string; initials: string };
+type EntityType = "agence" | "client" | "entreprise" | null;
+
+type TrustItem = {
+  kind: "logo" | "creator";
+  name: string;
+  initials?: string;
+  entityType?: EntityType;
+  followers?: number | null;
+};
+
+function formatFollowers(n: number): string {
+  if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)}M`;
+  if (n >= 1_000) return `${(n / 1_000).toFixed(n % 1_000 === 0 ? 0 : 1)}K`;
+  return `${n}`;
+}
+
+const ENTITY_LABEL: Record<NonNullable<EntityType>, string> = {
+  agence: "Agence",
+  client: "Client",
+  entreprise: "Entreprise",
+};
 
 async function fetchTrust(): Promise<TrustItem[]> {
   const { data, error } = await supabase
     .from("trust_items")
-    .select("name, kind, initials, display_order")
+    .select("name, kind, initials, entity_type, followers, display_order")
     .order("display_order", { ascending: true });
   if (error) throw error;
-  return (data ?? []).map((r) =>
-    r.kind === "logo"
-      ? ({ kind: "logo", name: r.name } as TrustItem)
-      : ({ kind: "creator", name: r.name, initials: r.initials ?? "" } as TrustItem),
-  );
+  return (data ?? []).map((r) => ({
+    kind: r.kind,
+    name: r.name,
+    initials: r.initials ?? "",
+    entityType: (r.entity_type as EntityType) ?? null,
+    followers: r.followers,
+  }));
 }
 
 function TrustNode({ item }: { item: TrustItem }) {
