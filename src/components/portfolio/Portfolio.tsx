@@ -70,9 +70,9 @@ export function Portfolio() {
           </TabsList>
 
           <TabsContent value="serious" className="mt-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
               {seriousVideos.map((v) => (
-                <VideoCard key={v.id} video={v} ratio="16/9" />
+                <VideoCard key={v.id} video={v} ratio="9/16" />
               ))}
             </div>
           </TabsContent>
