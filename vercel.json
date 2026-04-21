@@ -9,6 +9,6 @@
     }
   },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/server" }
+    { "source": "/((?!assets/|favicon\\.ico|robots\\.txt).*)", "destination": "/api/server" }
   ]
 }
