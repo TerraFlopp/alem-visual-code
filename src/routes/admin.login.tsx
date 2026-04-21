@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -25,9 +25,11 @@ function AdminLogin() {
   const [password, setPassword] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
-  if (!loading && user && isAdmin) {
-    navigate({ to: "/admin" });
-  }
+  useEffect(() => {
+    if (!loading && user && isAdmin) {
+      navigate({ to: "/admin" });
+    }
+  }, [loading, user, isAdmin, navigate]);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -37,10 +39,28 @@ function AdminLogin() {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.auth.signInWithPassword(parsed.data);
-    setSubmitting(false);
-    if (error) {
+    const { data, error } = await supabase.auth.signInWithPassword(parsed.data);
+    if (error || !data.user) {
+      setSubmitting(false);
       toast.error("Identifiants incorrects");
+      return;
+    }
+    // Verify admin role BEFORE navigating to avoid the redirect loop
+    const { data: roleRow, error: roleErr } = await supabase
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", data.user.id)
+      .eq("role", "admin")
+      .maybeSingle();
+    setSubmitting(false);
+    if (roleErr) {
+      toast.error("Erreur de vérification du rôle");
+      await supabase.auth.signOut();
+      return;
+    }
+    if (!roleRow) {
+      toast.error("Compte non administrateur");
+      await supabase.auth.signOut();
       return;
     }
     toast.success("Connexion réussie");
