@@ -38,6 +38,8 @@ type TrustRow = {
   kind: "logo" | "creator";
   initials: string | null;
   display_order: number;
+  entity_type: "agence" | "client" | "entreprise" | null;
+  followers: number | null;
 };
 
 type TestimonialRow = {
@@ -64,6 +66,8 @@ const trustSchema = z.object({
   kind: z.enum(["logo", "creator"]),
   initials: z.string().trim().max(4).optional().nullable(),
   display_order: z.number().int().min(0).max(9999),
+  entity_type: z.enum(["agence", "client", "entreprise"]).nullable(),
+  followers: z.number().int().min(0).max(1_000_000_000).nullable(),
 });
 
 const testiSchema = z.object({
