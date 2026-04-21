@@ -38,6 +38,8 @@ type TrustRow = {
   kind: "logo" | "creator";
   initials: string | null;
   display_order: number;
+  entity_type: "agence" | "client" | "entreprise" | null;
+  followers: number | null;
 };
 
 type TestimonialRow = {
@@ -64,6 +66,8 @@ const trustSchema = z.object({
   kind: z.enum(["logo", "creator"]),
   initials: z.string().trim().max(4).optional().nullable(),
   display_order: z.number().int().min(0).max(9999),
+  entity_type: z.enum(["agence", "client", "entreprise"]).nullable(),
+  followers: z.number().int().min(0).max(1_000_000_000).nullable(),
 });
 
 const testiSchema = z.object({
@@ -332,6 +336,8 @@ function TrustManager() {
       kind: row.kind,
       initials: row.initials || null,
       display_order: row.display_order,
+      entity_type: row.entity_type,
+      followers: row.followers,
     });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0]?.message ?? "Champs invalides");
@@ -387,14 +393,14 @@ function TrustEditor({
   useEffect(() => setLocal(row), [row]);
   return (
     <Card>
-      <div className="grid md:grid-cols-4 gap-3">
+      <div className="grid md:grid-cols-3 gap-3">
         <div>
           <Label className="text-white/70 text-xs">Nom</Label>
           <Input value={local.name} onChange={(e) => setLocal({ ...local, name: e.target.value })}
             className="bg-black/40 border-white/15 text-white" />
         </div>
         <div>
-          <Label className="text-white/70 text-xs">Type</Label>
+          <Label className="text-white/70 text-xs">Affichage</Label>
           <Select value={local.kind}
             onValueChange={(v) => setLocal({ ...local, kind: v as TrustRow["kind"] })}>
             <SelectTrigger className="bg-black/40 border-white/15 text-white"><SelectValue /></SelectTrigger>
@@ -409,6 +415,42 @@ function TrustEditor({
           <Input value={local.initials ?? ""} maxLength={4}
             onChange={(e) => setLocal({ ...local, initials: e.target.value })}
             className="bg-black/40 border-white/15 text-white" />
+        </div>
+        <div>
+          <Label className="text-white/70 text-xs">Catégorie</Label>
+          <Select
+            value={local.entity_type ?? "none"}
+            onValueChange={(v) =>
+              setLocal({
+                ...local,
+                entity_type: v === "none" ? null : (v as NonNullable<TrustRow["entity_type"]>),
+              })
+            }
+          >
+            <SelectTrigger className="bg-black/40 border-white/15 text-white"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="none">— Aucune —</SelectItem>
+              <SelectItem value="agence">Agence</SelectItem>
+              <SelectItem value="client">Client</SelectItem>
+              <SelectItem value="entreprise">Entreprise</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div>
+          <Label className="text-white/70 text-xs">Abonnés</Label>
+          <Input
+            type="number"
+            min={0}
+            placeholder="ex: 125000"
+            value={local.followers ?? ""}
+            onChange={(e) =>
+              setLocal({
+                ...local,
+                followers: e.target.value === "" ? null : Number(e.target.value),
+              })
+            }
+            className="bg-black/40 border-white/15 text-white"
+          />
         </div>
         <div>
           <Label className="text-white/70 text-xs">Ordre</Label>

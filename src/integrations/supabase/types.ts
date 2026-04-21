@@ -57,6 +57,8 @@ export type Database = {
         Row: {
           created_at: string
           display_order: number
+          entity_type: Database["public"]["Enums"]["trust_entity_type"] | null
+          followers: number | null
           id: string
           initials: string | null
           kind: Database["public"]["Enums"]["trust_kind"]
@@ -66,6 +68,8 @@ export type Database = {
         Insert: {
           created_at?: string
           display_order?: number
+          entity_type?: Database["public"]["Enums"]["trust_entity_type"] | null
+          followers?: number | null
           id?: string
           initials?: string | null
           kind: Database["public"]["Enums"]["trust_kind"]
@@ -75,6 +79,8 @@ export type Database = {
         Update: {
           created_at?: string
           display_order?: number
+          entity_type?: Database["public"]["Enums"]["trust_entity_type"] | null
+          followers?: number | null
           id?: string
           initials?: string | null
           kind?: Database["public"]["Enums"]["trust_kind"]
@@ -152,6 +158,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      trust_entity_type: "agence" | "client" | "entreprise"
       trust_kind: "logo" | "creator"
       video_category: "serious" | "creative"
       video_platform: "YouTube" | "Instagram" | "TikTok"
@@ -283,6 +290,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      trust_entity_type: ["agence", "client", "entreprise"],
       trust_kind: ["logo", "creator"],
       video_category: ["serious", "creative"],
       video_platform: ["YouTube", "Instagram", "TikTok"],
