@@ -336,6 +336,8 @@ function TrustManager() {
       kind: row.kind,
       initials: row.initials || null,
       display_order: row.display_order,
+      entity_type: row.entity_type,
+      followers: row.followers,
     });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0]?.message ?? "Champs invalides");
