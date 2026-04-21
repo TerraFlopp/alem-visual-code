@@ -1,7 +1,34 @@
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { creativeVideos, seriousVideos, type VideoEmbed } from "@/content/portfolio";
+import { supabase } from "@/integrations/supabase/client";
 import { SectionHeader } from "./Skills";
+
+type VideoEmbed = {
+  id: string;
+  title: string;
+  platform: "YouTube" | "Instagram" | "TikTok";
+  embedUrl: string;
+};
+
+async function fetchVideos() {
+  const { data, error } = await supabase
+    .from("videos")
+    .select("id, title, platform, embed_url, category, display_order")
+    .order("display_order", { ascending: true });
+  if (error) throw error;
+  const map = (rows: typeof data) =>
+    (rows ?? []).map((r) => ({
+      id: r.id,
+      title: r.title,
+      platform: r.platform as VideoEmbed["platform"],
+      embedUrl: r.embed_url,
+    }));
+  return {
+    serious: map((data ?? []).filter((d) => d.category === "serious")),
+    creative: map((data ?? []).filter((d) => d.category === "creative")),
+  };
+}
 
 function VideoCard({
   video,
@@ -44,6 +71,9 @@ function VideoCard({
 }
 
 export function Portfolio() {
+  const { data } = useQuery({ queryKey: ["videos"], queryFn: fetchVideos });
+  const seriousVideos = data?.serious ?? [];
+  const creativeVideos = data?.creative ?? [];
   return (
     <section id="portfolio" className="relative section px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">

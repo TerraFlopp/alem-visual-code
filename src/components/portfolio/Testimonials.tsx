@@ -1,7 +1,33 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
-import { testimonials, type Testimonial } from "@/content/portfolio";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import { SectionHeader } from "./Skills";
+
+type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  initials: string;
+  avatarUrl?: string;
+};
+
+async function fetchTestimonials(): Promise<Testimonial[]> {
+  const { data, error } = await supabase
+    .from("testimonials")
+    .select("quote, name, role, company, initials, avatar_url, display_order")
+    .order("display_order", { ascending: true });
+  if (error) throw error;
+  return (data ?? []).map((r) => ({
+    quote: r.quote,
+    name: r.name,
+    role: r.role,
+    company: r.company,
+    initials: r.initials,
+    avatarUrl: r.avatar_url ?? undefined,
+  }));
+}
 
 function Avatar({ item }: { item: Testimonial }) {
   if (item.avatarUrl) {
@@ -35,6 +61,10 @@ function Avatar({ item }: { item: Testimonial }) {
 }
 
 export function Testimonials() {
+  const { data: testimonials = [] } = useQuery({
+    queryKey: ["testimonials"],
+    queryFn: fetchTestimonials,
+  });
   return (
     <section id="testimonials" className="relative section px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">

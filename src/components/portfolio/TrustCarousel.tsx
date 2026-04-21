@@ -1,5 +1,23 @@
-import { trustItems, type TrustItem } from "@/content/portfolio";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import { SectionHeader } from "./Skills";
+
+type TrustItem =
+  | { kind: "logo"; name: string }
+  | { kind: "creator"; name: string; initials: string };
+
+async function fetchTrust(): Promise<TrustItem[]> {
+  const { data, error } = await supabase
+    .from("trust_items")
+    .select("name, kind, initials, display_order")
+    .order("display_order", { ascending: true });
+  if (error) throw error;
+  return (data ?? []).map((r) =>
+    r.kind === "logo"
+      ? ({ kind: "logo", name: r.name } as TrustItem)
+      : ({ kind: "creator", name: r.name, initials: r.initials ?? "" } as TrustItem),
+  );
+}
 
 function TrustNode({ item }: { item: TrustItem }) {
   if (item.kind === "logo") {
@@ -33,7 +51,7 @@ function TrustNode({ item }: { item: TrustItem }) {
 }
 
 export function TrustCarousel() {
-  // Duplicate the array for a seamless loop
+  const { data: trustItems = [] } = useQuery({ queryKey: ["trust"], queryFn: fetchTrust });
   const loop = [...trustItems, ...trustItems];
 
   return (
