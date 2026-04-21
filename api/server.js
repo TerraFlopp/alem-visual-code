@@ -5,7 +5,7 @@
 import handler from "../dist/server/index.js";
 
 export const config = {
-  runtime: "nodejs20.x",
+  runtime: "nodejs",
 };
 
 function buildRequest(req) {
