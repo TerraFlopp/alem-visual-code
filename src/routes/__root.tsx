@@ -47,11 +47,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "Post-production, stratégie de contenu, développement et storytelling. Portfolio premium.",
       },
-      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
-    ],
     ],
     links: [
       {
