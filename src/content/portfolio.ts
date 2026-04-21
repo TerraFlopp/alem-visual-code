@@ -99,6 +99,35 @@ export type TimelineEntry = {
   critical?: boolean;
 };
 
+export type Testimonial = {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  initials: string;
+  // Optionnel : URL d'une photo de profil. Si vide, les initiales sont affichées.
+  avatarUrl?: string;
+};
+
+export const testimonials: Testimonial[] = [
+  {
+    quote:
+      "Alem combine une rigueur d'ingénieur avec un vrai sens narratif. Livrables nets, dans les délais, et toujours une longueur d'avance sur les détails techniques.",
+    name: "Léa Martin",
+    role: "Brand Manager",
+    company: "Studio Nova",
+    initials: "LM",
+  },
+  {
+    quote:
+      "Collaboration fluide du brief à la livraison. Il a structuré notre ligne éditoriale et produit des contenus qui ont sensiblement fait monter notre engagement.",
+    name: "Karim Benali",
+    role: "Créateur & Fondateur",
+    company: "KB Studio",
+    initials: "KB",
+  },
+];
+
 export const timeline: TimelineEntry[] = [
   {
     year: "2021",
