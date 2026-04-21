@@ -29,11 +29,22 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Alem Djibril — Video Editor & Developer" },
+      {
+        name: "description",
+        content:
+          "Portfolio d'Alem Djibril : video editor et developer. L'ingénierie technique au service de l'impact visuel.",
+      },
+      { name: "author", content: "Alem Djibril" },
+      {
+        property: "og:title",
+        content: "Alem Djibril — Video Editor & Developer",
+      },
+      {
+        property: "og:description",
+        content:
+          "Post-production, stratégie de contenu, développement et storytelling. Portfolio premium.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -42,6 +53,16 @@ export const Route = createRootRoute({
       {
         rel: "stylesheet",
         href: appCss,
+      },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
       },
     ],
   }),
@@ -52,11 +73,11 @@ export const Route = createRootRoute({
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr" className="dark">
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body className="font-display bg-abyss text-white antialiased">
         {children}
         <Scripts />
       </body>
