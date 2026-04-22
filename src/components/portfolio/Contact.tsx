@@ -41,8 +41,7 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="mt-5 text-sm sm:text-base text-white/60"
         >
-          Réponse sous 48h ouvrées. Pas de réseaux sociaux personnels — uniquement
-          email et téléphone.
+          Réponse sous 48h ouvrées.
         </motion.p>
 
         <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
