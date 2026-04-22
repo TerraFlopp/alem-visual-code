@@ -463,6 +463,13 @@ function TrustEditor({
             className="bg-black/40 border-white/15 text-white" />
         </div>
       </div>
+      <ImageUploader
+        label="Logo / Photo (optionnel — remplace le texte)"
+        value={local.logo_url}
+        onChange={(url) => setLocal({ ...local, logo_url: url })}
+        folder="trust"
+        rounded={local.kind === "creator"}
+      />
       <div className="flex gap-2 justify-end pt-2">
         <Button variant="outline" size="sm" onClick={() => onDelete(row.id)}
           className="border-red-500/40 text-red-400 hover:bg-red-500/10">
