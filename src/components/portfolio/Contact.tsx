@@ -1,8 +1,15 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, ArrowUpRight } from "lucide-react";
+import { toast } from "sonner";
 import { personal } from "@/content/portfolio";
 
 export function Contact() {
+  // Fonction pour copier dans le presse-papier avec une notification
+  const handleCopy = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    toast.success(`${label} copié !`);
+  };
+
   return (
     <section
       id="contact"
@@ -39,9 +46,11 @@ export function Contact() {
         </motion.p>
 
         <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
-          <a
-            href={`mailto:${personal.email}`}
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-violet bg-white/[0.02] p-5 text-left glow-violet-hover focus-gold"
+          {/* Bloc Email : Copie au clic */}
+          <button
+            type="button"
+            onClick={() => handleCopy(personal.email, "Email")}
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-violet bg-white/[0.02] p-5 text-left glow-violet-hover focus-gold w-full"
           >
             <div className="flex items-center gap-4 min-w-0">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet text-violet">
@@ -57,11 +66,13 @@ export function Contact() {
               </div>
             </div>
             <ArrowUpRight className="h-4 w-4 text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+          </button>
 
-          <a
-            href={`tel:${personal.phone.replace(/\s/g, "")}`}
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-violet bg-white/[0.02] p-5 text-left glow-violet-hover focus-gold"
+          {/* Bloc Téléphone : Copie au clic */}
+          <button
+            type="button"
+            onClick={() => handleCopy(personal.phone, "Numéro")}
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-violet bg-white/[0.02] p-5 text-left glow-violet-hover focus-gold w-full"
           >
             <div className="flex items-center gap-4 min-w-0">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet text-violet">
@@ -77,7 +88,7 @@ export function Contact() {
               </div>
             </div>
             <ArrowUpRight className="h-4 w-4 text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </a>
+          </button>
         </div>
 
         <motion.div
@@ -87,6 +98,7 @@ export function Contact() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-10"
         >
+          {/* Bouton principal : Ouvre la messagerie */}
           <a
             href={`mailto:${personal.email}`}
             className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-black glow-gold transition-transform hover:scale-[1.02] focus-gold"
