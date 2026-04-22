@@ -56,7 +56,21 @@ export function Hero() {
           <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">gestion</span>{" "}
           et du{" "}
           <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">montage</span>{" "}
-          son terrain de jeu favori. J'aime explorer les outils, comprendre comment les choses fonctionnent en profondeur, puis transformer cette compréhension en contenus clairs, rythmés et impactants. Entre lignes de code, timelines et stratégies de marque, je cherche toujours le même équilibre&nbsp;: la rigueur technique au service d'une histoire qui se raconte bien.
+          son terrain de jeu favori. J'aime explorer les{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">outils</span>,
+          comprendre comment les choses fonctionnent en profondeur, puis transformer cette{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">compréhension</span>{" "}
+          en contenus clairs, rythmés et{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">impactants</span>.
+          Entre lignes de{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">code</span>,
+          timelines et{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">stratégies de marque</span>,
+          je cherche toujours le même équilibre&nbsp;: la{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">rigueur technique</span>{" "}
+          au service d'une{" "}
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">histoire</span>{" "}
+          qui se raconte bien.
         </motion.p>
 
         <motion.p
