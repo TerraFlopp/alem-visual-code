@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Film, Megaphone, Code2, Mic, type LucideIcon } from "lucide-react";
+import { Film, Megaphone, Mic, type LucideIcon } from "lucide-react";
 
 type Skill = {
   icon: LucideIcon;
@@ -19,12 +19,6 @@ const skills: Skill[] = [
     title: "Stratégie & Community",
     description:
       "Stratégie de contenu, ligne éditoriale, planning, KPIs et croissance d'audience sur les plateformes sociales.",
-  },
-  {
-    icon: Code2,
-    title: "Développement",
-    description:
-      "JavaScript, Python, C++. Outils internes, automatisations et interfaces sur mesure pour la production.",
   },
   {
     icon: Mic,
