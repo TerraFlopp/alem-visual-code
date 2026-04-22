@@ -36,7 +36,7 @@ const skills: Skill[] = [
 
 export function Skills() {
   return (
-    <section id="skills" className="relative section px-6 md:px-12 lg:px-20">
+    <section id="skills" className="relative section px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Expertises"
@@ -44,7 +44,7 @@ export function Skills() {
           description="Quatre disciplines maîtrisées qui s'amplifient mutuellement."
         />
 
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {skills.map((skill, i) => {
             const Icon = skill.icon;
             return (
@@ -103,11 +103,11 @@ export function SectionHeader({
       className="max-w-2xl"
     >
       <p className="text-xs uppercase tracking-[0.3em] text-violet">{eyebrow}</p>
-      <h2 className="mt-4 font-display text-3xl md:text-5xl font-bold leading-tight text-white">
+      <h2 className="mt-4 font-display text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-white">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-white/60 text-base md:text-lg">{description}</p>
+        <p className="mt-3 sm:mt-4 text-white/60 text-sm sm:text-base md:text-lg">{description}</p>
       )}
     </motion.div>
   );

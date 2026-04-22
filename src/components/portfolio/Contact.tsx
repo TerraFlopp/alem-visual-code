@@ -6,7 +6,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative section px-6 md:px-12 lg:px-20"
+      className="relative section px-4 sm:px-6 md:px-12 lg:px-20"
     >
       <div className="mx-auto max-w-4xl text-center">
         <motion.p
@@ -23,7 +23,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.05 }}
-          className="mt-5 font-display text-4xl md:text-6xl font-bold leading-tight text-white"
+          className="mt-5 font-display text-3xl sm:text-4xl md:text-6xl font-bold leading-tight text-white"
         >
           Parlons de votre projet.
         </motion.h2>
@@ -32,13 +32,13 @@ export function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-5 text-white/60"
+          className="mt-5 text-sm sm:text-base text-white/60"
         >
           Réponse sous 48h ouvrées. Pas de réseaux sociaux personnels — uniquement
           email et téléphone.
         </motion.p>
 
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
           <a
             href={`mailto:${personal.email}`}
             className="group flex items-center justify-between gap-4 rounded-2xl border border-violet bg-white/[0.02] p-5 text-left glow-violet-hover focus-gold"
