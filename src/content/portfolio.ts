@@ -131,31 +131,31 @@ export const testimonials: Testimonial[] = [
 export const timeline: TimelineEntry[] = [
   {
     year: "2021",
-    company: "Orange",
-    role: "Data Center — Ingénierie",
+    company: "Veolia",
+    role: "Stage d'observation — Parcours scolaire",
     description:
-      "Exploitation et fiabilisation d'infrastructures critiques. Compréhension profonde des systèmes à haute disponibilité.",
+      "Première immersion en entreprise : découverte des enjeux d'un grand groupe industriel et de la culture corporate.",
     critical: true,
   },
   {
     year: "2022",
     company: "CCF",
-    role: "Secteur Bancaire",
+    role: "Stage d'observation — Secteur Bancaire",
     description:
-      "Mission au cœur d'un environnement financier exigeant : rigueur, conformité, communication transverse.",
+      "Immersion au cœur d'un environnement financier exigeant : rigueur, conformité et communication transverse.",
   },
   {
-    year: "2023",
-    company: "Veolia",
-    role: "Stratégie",
+    year: "2022",
+    company: "Orange",
+    role: "Stage d'observation — Data Center",
     description:
-      "Pilotage stratégique sur des sujets d'innovation et transformation. Synthèse, narration, livrables exécutifs.",
+      "Découverte des infrastructures critiques et des systèmes à haute disponibilité au sein d'un opérateur majeur.",
     critical: true,
   },
   {
-    year: "2024 — Aujourd'hui",
+    year: "2025 — Aujourd'hui",
     company: "Indépendant",
-    role: "Video Editor & Developer",
+    role: "Monteur Vidéo & Developer",
     description:
       "Production de contenus haut de gamme pour agences et créateurs : post-production, stratégie éditoriale, développement sur mesure.",
     critical: true,

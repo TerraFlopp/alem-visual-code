@@ -47,8 +47,22 @@ export function Hero() {
         <motion.p
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.0 }}
-          className="mt-8 max-w-2xl text-base md:text-lg text-white/60 leading-relaxed"
+          transition={{ duration: 0.7, delay: 0.9 }}
+          className="mt-8 max-w-3xl text-lg md:text-xl text-white/75 leading-relaxed font-light italic"
+        >
+          <span className="text-gold font-semibold not-italic">Passionné</span> de{" "}
+          <span className="text-gold font-semibold not-italic">technologie</span>, je trouve mon bonheur dans la{" "}
+          <span className="text-gold font-semibold not-italic">gestion</span> et le{" "}
+          <span className="text-gold font-semibold not-italic">montage</span> — là où la{" "}
+          <span className="text-gold font-semibold not-italic">précision</span> rencontre la{" "}
+          <span className="text-gold font-semibold not-italic">créativité</span>.
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.1 }}
+          className="mt-6 max-w-2xl text-base md:text-lg text-white/60 leading-relaxed"
         >
           {personal.subtitle}
         </motion.p>
