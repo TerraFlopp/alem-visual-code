@@ -51,12 +51,8 @@ export function Hero() {
           className="mt-8 max-w-2xl text-sm md:text-[0.95rem] text-white/65 leading-relaxed font-light"
         >
           Curieux depuis toujours, je suis un{" "}
-          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">passionné</span>{" "}
-          de technologie qui a fait du{" "}
-          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">montage</span>{" "}
-          son terrain de jeu favori. J'aime explorer les outils, comprendre comment les choses fonctionnent en profondeur, puis transformer cette compréhension en contenus clairs, rythmés et impactants. Entre lignes de code, timelines et stratégies de marque, je cherche toujours le même équilibre&nbsp;: la rigueur technique au service d'une{" "}
-          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">histoire</span>{" "}
-          qui se raconte bien.
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">passionné de technologie</span>{" "}
+          qui a fait du montage son terrain de jeu favori. J'aime explorer les outils, comprendre comment les choses fonctionnent en profondeur, puis transformer cette compréhension en contenus clairs, rythmés et impactants. Entre lignes de code, timelines et stratégies de marque, je cherche toujours le même équilibre&nbsp;: la rigueur technique au service d'une histoire qui se raconte bien.
         </motion.p>
 
         <motion.p
