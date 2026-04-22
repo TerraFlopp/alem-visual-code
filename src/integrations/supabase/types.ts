@@ -62,6 +62,7 @@ export type Database = {
           id: string
           initials: string | null
           kind: Database["public"]["Enums"]["trust_kind"]
+          logo_url: string | null
           name: string
           updated_at: string
         }
@@ -73,6 +74,7 @@ export type Database = {
           id?: string
           initials?: string | null
           kind: Database["public"]["Enums"]["trust_kind"]
+          logo_url?: string | null
           name: string
           updated_at?: string
         }
@@ -84,6 +86,7 @@ export type Database = {
           id?: string
           initials?: string | null
           kind?: Database["public"]["Enums"]["trust_kind"]
+          logo_url?: string | null
           name?: string
           updated_at?: string
         }
