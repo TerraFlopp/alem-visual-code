@@ -592,11 +592,13 @@ function TestiEditor({
             className="bg-black/40 border-white/15 text-white" />
         </div>
         <div className="md:col-span-2">
-          <Label className="text-white/70 text-xs">URL photo (optionnel)</Label>
-          <Input value={local.avatar_url ?? ""}
-            onChange={(e) => setLocal({ ...local, avatar_url: e.target.value })}
-            placeholder="https://…"
-            className="bg-black/40 border-white/15 text-white" />
+          <ImageUploader
+            label="Photo (optionnel)"
+            value={local.avatar_url}
+            onChange={(url) => setLocal({ ...local, avatar_url: url })}
+            folder="testimonials"
+            rounded
+          />
         </div>
         <div>
           <Label className="text-white/70 text-xs">Ordre</Label>
