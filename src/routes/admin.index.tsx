@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Plus, Trash2, LogOut, Save } from "lucide-react";
+import { ImageUploader } from "@/components/admin/ImageUploader";
 
 export const Route = createFileRoute("/admin/")({
   component: AdminPanel,
@@ -40,6 +41,7 @@ type TrustRow = {
   display_order: number;
   entity_type: "agence" | "client" | "entreprise" | null;
   followers: number | null;
+  logo_url: string | null;
 };
 
 type TestimonialRow = {
@@ -68,6 +70,7 @@ const trustSchema = z.object({
   display_order: z.number().int().min(0).max(9999),
   entity_type: z.enum(["agence", "client", "entreprise"]).nullable(),
   followers: z.number().int().min(0).max(1_000_000_000).nullable(),
+  logo_url: z.string().trim().url().max(500).nullable(),
 });
 
 const testiSchema = z.object({
