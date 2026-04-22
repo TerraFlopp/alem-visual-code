@@ -75,7 +75,7 @@ export function Portfolio() {
   const seriousVideos = data?.serious ?? [];
   const creativeVideos = data?.creative ?? [];
   return (
-    <section id="portfolio" className="relative section px-6 md:px-12 lg:px-20">
+    <section id="portfolio" className="relative section px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Portfolio"
@@ -83,24 +83,24 @@ export function Portfolio() {
           description="Du contenu corporate exigeant aux formats verticaux à fort impact."
         />
 
-        <Tabs defaultValue="serious" className="mt-12">
-          <TabsList className="h-11 bg-white/[0.04] border border-violet rounded-full p-1">
+        <Tabs defaultValue="serious" className="mt-8 sm:mt-12">
+          <TabsList className="h-auto sm:h-11 w-full sm:w-auto flex flex-col sm:flex-row gap-1 bg-white/[0.04] border border-violet rounded-2xl sm:rounded-full p-1">
             <TabsTrigger
               value="serious"
-              className="rounded-full px-5 text-sm data-[state=active]:bg-violet data-[state=active]:text-white"
+              className="w-full sm:w-auto rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm data-[state=active]:bg-violet data-[state=active]:text-white"
             >
               Serious & Business
             </TabsTrigger>
             <TabsTrigger
               value="creative"
-              className="rounded-full px-5 text-sm data-[state=active]:bg-violet data-[state=active]:text-white"
+              className="w-full sm:w-auto rounded-full px-4 sm:px-5 py-2 text-xs sm:text-sm data-[state=active]:bg-violet data-[state=active]:text-white"
             >
               Divertissement & Créa
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="serious" className="mt-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
               {seriousVideos.map((v) => (
                 <VideoCard key={v.id} video={v} ratio="9/16" />
               ))}
@@ -108,7 +108,7 @@ export function Portfolio() {
           </TabsContent>
 
           <TabsContent value="creative" className="mt-8">
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
               {creativeVideos.map((v) => (
                 <VideoCard key={v.id} video={v} ratio="9/16" />
               ))}

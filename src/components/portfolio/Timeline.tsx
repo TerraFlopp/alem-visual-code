@@ -12,7 +12,7 @@ export function Timeline() {
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   return (
-    <section className="relative section px-6 md:px-12 lg:px-20">
+    <section className="relative section px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Parcours"
@@ -20,7 +20,7 @@ export function Timeline() {
           description="De l'ingénierie d'infrastructures à la production créative — un fil conducteur : la précision."
         />
 
-        <div ref={containerRef} className="relative mt-16">
+        <div ref={containerRef} className="relative mt-10 sm:mt-16">
           {/* Vertical rail */}
           <div
             aria-hidden

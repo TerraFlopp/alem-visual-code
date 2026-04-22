@@ -66,7 +66,7 @@ export function Testimonials() {
     queryFn: fetchTestimonials,
   });
   return (
-    <section id="testimonials" className="relative section px-6 md:px-12 lg:px-20">
+    <section id="testimonials" className="relative section px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Références"
@@ -74,7 +74,7 @@ export function Testimonials() {
           description="Retours de clients et collaborateurs — format direct, sans filtre."
         />
 
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {testimonials.map((item, i) => (
             <motion.article
               key={item.name}

@@ -131,7 +131,7 @@ export function TrustCarousel() {
   const loop = [...trustItems, ...trustItems];
 
   return (
-    <section className="relative section px-6 md:px-12 lg:px-20">
+    <section className="relative section px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Confiance"
@@ -140,8 +140,8 @@ export function TrustCarousel() {
         />
       </div>
 
-      <div className="relative mt-12 marquee-mask">
-        <div className="marquee-track flex items-center gap-8 py-4">
+      <div className="relative mt-8 sm:mt-12 marquee-mask">
+        <div className="marquee-track flex items-center gap-6 sm:gap-8 py-4">
           {loop.map((item, idx) => (
             <TrustNode key={`${item.name}-${idx}`} item={item} />
           ))}
