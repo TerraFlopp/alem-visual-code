@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/select";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Plus, Trash2, LogOut, Save } from "lucide-react";
+import { ImageUploader } from "@/components/admin/ImageUploader";
 
 export const Route = createFileRoute("/admin/")({
   component: AdminPanel,
@@ -40,6 +41,7 @@ type TrustRow = {
   display_order: number;
   entity_type: "agence" | "client" | "entreprise" | null;
   followers: number | null;
+  logo_url: string | null;
 };
 
 type TestimonialRow = {
@@ -68,6 +70,7 @@ const trustSchema = z.object({
   display_order: z.number().int().min(0).max(9999),
   entity_type: z.enum(["agence", "client", "entreprise"]).nullable(),
   followers: z.number().int().min(0).max(1_000_000_000).nullable(),
+  logo_url: z.string().trim().url().max(500).nullable(),
 });
 
 const testiSchema = z.object({
@@ -338,6 +341,7 @@ function TrustManager() {
       display_order: row.display_order,
       entity_type: row.entity_type,
       followers: row.followers,
+      logo_url: row.logo_url || null,
     });
     if (!parsed.success) {
       toast.error(parsed.error.issues[0]?.message ?? "Champs invalides");
@@ -459,6 +463,13 @@ function TrustEditor({
             className="bg-black/40 border-white/15 text-white" />
         </div>
       </div>
+      <ImageUploader
+        label="Logo / Photo (optionnel — remplace le texte)"
+        value={local.logo_url}
+        onChange={(url) => setLocal({ ...local, logo_url: url })}
+        folder="trust"
+        rounded={local.kind === "creator"}
+      />
       <div className="flex gap-2 justify-end pt-2">
         <Button variant="outline" size="sm" onClick={() => onDelete(row.id)}
           className="border-red-500/40 text-red-400 hover:bg-red-500/10">
@@ -581,11 +592,13 @@ function TestiEditor({
             className="bg-black/40 border-white/15 text-white" />
         </div>
         <div className="md:col-span-2">
-          <Label className="text-white/70 text-xs">URL photo (optionnel)</Label>
-          <Input value={local.avatar_url ?? ""}
-            onChange={(e) => setLocal({ ...local, avatar_url: e.target.value })}
-            placeholder="https://…"
-            className="bg-black/40 border-white/15 text-white" />
+          <ImageUploader
+            label="Photo (optionnel)"
+            value={local.avatar_url}
+            onChange={(url) => setLocal({ ...local, avatar_url: url })}
+            folder="testimonials"
+            rounded
+          />
         </div>
         <div>
           <Label className="text-white/70 text-xs">Ordre</Label>

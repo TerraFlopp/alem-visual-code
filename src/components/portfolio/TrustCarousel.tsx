@@ -10,6 +10,7 @@ type TrustItem = {
   initials?: string;
   entityType?: EntityType;
   followers?: number | null;
+  logoUrl?: string | null;
 };
 
 function formatFollowers(n: number): string {
@@ -27,7 +28,7 @@ const ENTITY_LABEL: Record<NonNullable<EntityType>, string> = {
 async function fetchTrust(): Promise<TrustItem[]> {
   const { data, error } = await supabase
     .from("trust_items")
-    .select("name, kind, initials, entity_type, followers, display_order")
+    .select("name, kind, initials, entity_type, followers, logo_url, display_order")
     .order("display_order", { ascending: true });
   if (error) throw error;
   return (data ?? []).map((r) => ({
@@ -36,6 +37,7 @@ async function fetchTrust(): Promise<TrustItem[]> {
     initials: r.initials ?? "",
     entityType: (r.entity_type as EntityType) ?? null,
     followers: r.followers,
+    logoUrl: r.logo_url,
   }));
 }
 
@@ -50,9 +52,18 @@ function TrustNode({ item }: { item: TrustItem }) {
     return (
       <div className="flex flex-col items-center gap-2 min-w-[180px]">
         <div className="flex h-16 w-full items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-6 transition-all duration-300 hover:border-violet">
-          <span className="font-display text-lg font-semibold tracking-wide text-white/80">
-            {item.name}
-          </span>
+          {item.logoUrl ? (
+            <img
+              src={item.logoUrl}
+              alt={item.name}
+              className="max-h-10 w-auto object-contain"
+              loading="lazy"
+            />
+          ) : (
+            <span className="font-display text-lg font-semibold tracking-wide text-white/80">
+              {item.name}
+            </span>
+          )}
         </div>
         {(entityBadge || followersBadge) && (
           <div className="flex flex-wrap items-center justify-center gap-1.5">
@@ -74,9 +85,18 @@ function TrustNode({ item }: { item: TrustItem }) {
   return (
     <div className="flex flex-col items-center gap-2 min-w-[120px]">
       <div className="relative h-16 w-16 rounded-full border-2 border-violet bg-gradient-to-br from-white/10 to-white/[0.02] p-[2px] transition-all duration-300 hover:scale-105">
-        <div className="flex h-full w-full items-center justify-center rounded-full bg-black/50 text-sm font-semibold text-white">
-          {item.initials}
-        </div>
+        {item.logoUrl ? (
+          <img
+            src={item.logoUrl}
+            alt={item.name}
+            className="h-full w-full rounded-full object-cover"
+            loading="lazy"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center rounded-full bg-black/50 text-sm font-semibold text-white">
+            {item.initials}
+          </div>
+        )}
         <div
           aria-hidden
           className="absolute inset-0 rounded-full"
