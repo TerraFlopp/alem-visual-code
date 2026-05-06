@@ -130,7 +130,7 @@ export const testimonials: Testimonial[] = [
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "2021",
+    year: "2023",
     company: "Veolia",
     role: "Stage d'observation — Parcours scolaire",
     description:
@@ -138,14 +138,14 @@ export const timeline: TimelineEntry[] = [
     critical: true,
   },
   {
-    year: "2022",
+    year: "2024",
     company: "CCF",
     role: "Stage d'observation — Secteur Bancaire",
     description:
       "Immersion au cœur d'un environnement financier exigeant : rigueur, conformité et communication transverse.",
   },
   {
-    year: "2022",
+    year: "2024",
     company: "Orange",
     role: "Stage d'observation — Data Center",
     description:
