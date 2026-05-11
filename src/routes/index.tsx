@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { BackgroundBlobs } from "@/components/portfolio/BackgroundBlobs";
 import { Hero } from "@/components/portfolio/Hero";
 import { Skills } from "@/components/portfolio/Skills";
@@ -14,6 +16,20 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  useEffect(() => {
+    const key = "visit_tracked_session";
+    if (sessionStorage.getItem(key)) return;
+    sessionStorage.setItem(key, "1");
+    supabase
+      .from("page_visits")
+      .insert({
+        path: window.location.pathname,
+        referrer: document.referrer || null,
+        user_agent: navigator.userAgent,
+      })
+      .then(() => {});
+  }, []);
+
   return (
     <div id="top" className="relative min-h-screen overflow-x-hidden text-white">
       <BackgroundBlobs />
