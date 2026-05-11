@@ -132,6 +132,7 @@ function AdminPanel() {
             <TabsTrigger value="videos" className="data-[state=active]:bg-violet">Vidéos</TabsTrigger>
             <TabsTrigger value="trust" className="data-[state=active]:bg-violet">Carousel</TabsTrigger>
             <TabsTrigger value="testi" className="data-[state=active]:bg-violet">Retours clients</TabsTrigger>
+            <TabsTrigger value="visits" className="data-[state=active]:bg-violet">Visites</TabsTrigger>
           </TabsList>
 
           <TabsContent value="videos" className="mt-6">
@@ -143,8 +144,81 @@ function AdminPanel() {
           <TabsContent value="testi" className="mt-6">
             <TestimonialsManager />
           </TabsContent>
+          <TabsContent value="visits" className="mt-6">
+            <VisitsManager />
+          </TabsContent>
         </Tabs>
       </main>
+    </div>
+  );
+}
+
+/* -------------------- VISITS -------------------- */
+type VisitRow = {
+  id: string;
+  path: string;
+  referrer: string | null;
+  user_agent: string | null;
+  created_at: string;
+};
+
+function VisitsManager() {
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["admin-visits"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("page_visits")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(500);
+      if (error) throw error;
+      return data as VisitRow[];
+    },
+  });
+
+  const now = Date.now();
+  const last24h = data.filter((v) => now - new Date(v.created_at).getTime() < 24 * 3600 * 1000).length;
+  const last7d = data.filter((v) => now - new Date(v.created_at).getTime() < 7 * 24 * 3600 * 1000).length;
+
+  function deviceOf(ua: string | null) {
+    if (!ua) return "Inconnu";
+    if (/Mobi|Android|iPhone/i.test(ua)) return "Mobile";
+    if (/iPad|Tablet/i.test(ua)) return "Tablette";
+    return "Desktop";
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <Card><p className="text-xs text-white/60">Total (500 dernières)</p><p className="text-3xl font-display">{data.length}</p></Card>
+        <Card><p className="text-xs text-white/60">Dernières 24h</p><p className="text-3xl font-display">{last24h}</p></Card>
+        <Card><p className="text-xs text-white/60">7 derniers jours</p><p className="text-3xl font-display">{last7d}</p></Card>
+      </div>
+
+      <div className="rounded-xl border border-white/10 bg-white/[0.02] overflow-hidden">
+        <div className="grid grid-cols-12 gap-2 px-4 py-2 text-xs uppercase tracking-wider text-white/50 border-b border-white/10">
+          <div className="col-span-3">Date</div>
+          <div className="col-span-2">Page</div>
+          <div className="col-span-2">Appareil</div>
+          <div className="col-span-5">Référent</div>
+        </div>
+        {isLoading ? (
+          <p className="p-4 text-sm text-white/60">Chargement…</p>
+        ) : data.length === 0 ? (
+          <p className="p-4 text-sm text-white/60">Aucune visite enregistrée pour l'instant.</p>
+        ) : (
+          <div className="max-h-[60vh] overflow-y-auto divide-y divide-white/5">
+            {data.map((v) => (
+              <div key={v.id} className="grid grid-cols-12 gap-2 px-4 py-2 text-sm">
+                <div className="col-span-3 text-white/80">{new Date(v.created_at).toLocaleString("fr-FR")}</div>
+                <div className="col-span-2 text-white/70 truncate">{v.path}</div>
+                <div className="col-span-2 text-white/70">{deviceOf(v.user_agent)}</div>
+                <div className="col-span-5 text-white/50 truncate">{v.referrer || "—"}</div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
