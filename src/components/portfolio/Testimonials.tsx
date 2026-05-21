@@ -71,7 +71,7 @@ export function Testimonials() {
         <SectionHeader
           eyebrow="Références"
           title="Ce qu'ils disent du travail."
-          description="Retours de clients et collaborateurs — format direct, sans filtre."
+          description=""
         />
 
         <div className="mt-8 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
