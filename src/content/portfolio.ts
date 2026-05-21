@@ -5,7 +5,7 @@ export const personal = {
   name: "Alem Djibril",
   tagline: "L'ingénierie technique au service de l'impact visuel.",
   subtitle:
-    "Video Editor & Developer — je conçois des contenus qui combinent rigueur technique, narration et stratégie de marque.",
+    "Video Editor & Developer\u00A0 je conçois des contenus qui combinent rigueur technique, narration et stratégie de marque.",
   email: "terraprod.pro@gmail.com",
   phone: "+33 6 12 18 32 56",
 };
