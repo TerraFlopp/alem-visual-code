@@ -17,7 +17,7 @@ export function Timeline() {
         <SectionHeader
           eyebrow="Parcours"
           title="Une trajectoire singulière."
-          description="De l'ingénierie d'infrastructures à la production créative — un fil conducteur : la précision."
+          description="De l'ingénierie d'infrastructures à la production créative&nbsp; un fil conducteur : la précision."
         />
 
         <div ref={containerRef} className="relative mt-10 sm:mt-16">
