@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MessageCircle, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
 import { personal } from "@/content/portfolio";
 
@@ -34,17 +34,7 @@ export function Contact() {
         >
           Parlons de votre projet.
         </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="mt-5 text-sm sm:text-base text-white/60"
-        >
-          Réponse sous 48h ouvrées.
-        </motion.p>
-
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
           {/* Bloc Email : Copie au clic */}
           <button
             type="button"
