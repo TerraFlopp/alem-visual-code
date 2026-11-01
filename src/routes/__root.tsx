@@ -35,17 +35,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Portfolio d'Alem Djibril : video editor et developer. L'ingénierie technique au service de l'impact visuel.",
+          "Portfolio de Terraflopp : monteur vidéo et community manager. La création de contenu au service de l'impact visuel.",
       },
-      { name: "author", content: "Alem Djibril" },
+      { name: "author", content: "Terraflopp" },
       {
         property: "og:title",
-        content: "Alem Djibril — Video Editor & Developer",
+        content: "Terraflopp — Monteur & Community Manager",
       },
       {
         property: "og:description",
         content:
-          "Post-production, stratégie de contenu, développement et storytelling. Portfolio premium.",
+          "Montage vidéo, création de contenu et gestion de communauté. Portfolio premium.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },

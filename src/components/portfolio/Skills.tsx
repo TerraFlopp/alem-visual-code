@@ -35,10 +35,10 @@ export function Skills() {
         <SectionHeader
           eyebrow="Expertises"
           title="Un profil hybride, exécution premium."
-          description="Quatre disciplines maîtrisées qui s'amplifient mutuellement."
+          description="Trois disciplines maîtrisées qui s'amplifient mutuellement."
         />
 
-        <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        <div className="mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           {skills.map((skill, i) => {
             const Icon = skill.icon;
             return (
@@ -48,7 +48,9 @@ export function Skills() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative overflow-hidden rounded-2xl border border-violet bg-white/[0.02] p-6 glow-violet-hover"
+                className={`group relative overflow-hidden rounded-2xl border border-violet bg-white/[0.02] p-6 glow-violet-hover${
+                  i === 0 ? " sm:col-span-2 sm:mx-auto sm:w-[calc(50%-0.625rem)]" : ""
+                }`}
               >
                 <div
                   aria-hidden

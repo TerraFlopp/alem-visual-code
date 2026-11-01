@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { SectionHeader } from "./Skills";
-import { Briefcase, Sparkles } from "lucide-react";
 
 type VideoEmbed = {
   id: string;
@@ -25,10 +23,7 @@ async function fetchVideos() {
       platform: r.platform as VideoEmbed["platform"],
       embedUrl: r.embed_url,
     }));
-  return {
-    serious: map((data ?? []).filter((d) => d.category === "serious")),
-    creative: map((data ?? []).filter((d) => d.category === "creative")),
-  };
+  return map((data ?? []).filter((d) => d.category === "creative"));
 }
 
 function VideoCard({
@@ -73,56 +68,21 @@ function VideoCard({
 
 export function Portfolio() {
   const { data } = useQuery({ queryKey: ["videos"], queryFn: fetchVideos });
-  const seriousVideos = data?.serious ?? [];
-  const creativeVideos = data?.creative ?? [];
+  const videos = data ?? [];
   return (
     <section id="portfolio" className="relative section px-4 sm:px-6 md:px-12 lg:px-20">
       <div className="mx-auto max-w-6xl">
         <SectionHeader
           eyebrow="Portfolio"
           title="Une exécution adaptée à chaque univers."
-          description="Du contenu corporate exigeant aux formats verticaux à fort impact."
+          description="Des formats verticaux à fort impact, pensés pour retenir l'attention."
         />
 
-        <Tabs defaultValue="serious" className="mt-8 sm:mt-12">
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-xs uppercase tracking-[0.25em] text-white/50">
-              Choisis un univers
-            </p>
-            <TabsList className="h-auto w-full sm:w-auto flex flex-col sm:flex-row gap-2 bg-white/[0.04] border-2 border-violet rounded-2xl sm:rounded-full p-1.5 shadow-[0_0_32px_rgba(149,96,240,0.35)]">
-              <TabsTrigger
-                value="serious"
-                className="w-full sm:w-auto rounded-full px-5 sm:px-7 py-2.5 text-sm sm:text-base font-semibold inline-flex items-center justify-center gap-2 text-white/70 transition-all hover:text-white data-[state=active]:bg-violet data-[state=active]:text-white data-[state=active]:shadow-[0_0_24px_rgba(149,96,240,0.7)]"
-              >
-                <Briefcase className="h-4 w-4" />
-                Serious & Business
-              </TabsTrigger>
-              <TabsTrigger
-                value="creative"
-                className="w-full sm:w-auto rounded-full px-5 sm:px-7 py-2.5 text-sm sm:text-base font-semibold inline-flex items-center justify-center gap-2 text-white/70 transition-all hover:text-white data-[state=active]:bg-violet data-[state=active]:text-white data-[state=active]:shadow-[0_0_24px_rgba(149,96,240,0.7)]"
-              >
-                <Sparkles className="h-4 w-4" />
-                Divertissement & Créa
-              </TabsTrigger>
-            </TabsList>
-          </div>
-
-          <TabsContent value="serious" className="mt-8">
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-              {seriousVideos.map((v) => (
-                <VideoCard key={v.id} video={v} ratio="9/16" />
-              ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="creative" className="mt-8">
-            <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
-              {creativeVideos.map((v) => (
-                <VideoCard key={v.id} video={v} ratio="9/16" />
-              ))}
-            </div>
-          </TabsContent>
-        </Tabs>
+        <div className="mt-8 sm:mt-12 grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5">
+          {videos.map((v) => (
+            <VideoCard key={v.id} video={v} ratio="9/16" />
+          ))}
+        </div>
       </div>
     </section>
   );
