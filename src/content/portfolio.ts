@@ -112,7 +112,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Alem combine une rigueur d'ingénieur avec un vrai sens narratif. Livrables nets, dans les délais, et toujours une longueur d'avance sur les détails techniques.",
+      "Terraflopp combine un vrai sens narratif avec une exigence rare sur les détails. Livrables nets, dans les délais, et toujours une longueur d'avance sur les tendances.",
     name: "Léa Martin",
     role: "Brand Manager",
     company: "Studio Nova",
