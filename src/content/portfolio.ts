@@ -2,10 +2,10 @@
 // Edit text, links, video URLs and client lists here.
 
 export const personal = {
-  name: "Alem Djibril",
-  tagline: "L'ingénierie technique au service de l'impact visuel.",
+  name: "Terraflopp",
+  tagline: "La création de contenu au service de l'impact visuel.",
   subtitle:
-    "Video Editor & Developer\u00A0 je conçois des contenus qui combinent rigueur technique, narration et stratégie de marque.",
+    "Monteur & Community Manager\u00A0 je conçois des contenus qui combinent narration, rythme et stratégie de marque.",
   email: "terraprod.pro@gmail.com",
   phone: "+33 6 12 18 32 56",
 };
