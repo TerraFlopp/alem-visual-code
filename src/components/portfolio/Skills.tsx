@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Film, Megaphone, Code2, Mic, type LucideIcon } from "lucide-react";
+import { Film, Users, PenLine, type LucideIcon } from "lucide-react";
 
 type Skill = {
   icon: LucideIcon;
@@ -15,22 +15,16 @@ const skills: Skill[] = [
       "Adobe Suite (Premiere Pro, After Effects, Photoshop). Montage, motion design, étalonnage, sound design.",
   },
   {
-    icon: Megaphone,
-    title: "Stratégie & Community",
+    icon: Users,
+    title: "Stratégie & Accompagnement",
     description:
-      "Stratégie de contenu, ligne éditoriale, planning, KPIs et croissance d'audience sur les plateformes sociales.",
+      "J'accompagne des créateurs de A à Z : positionnement, ligne éditoriale et stratégie de publication. Une de mes élèves a dépassé 300 000 vues dès sa première vidéo.",
   },
   {
-    icon: Code2,
-    title: "Développement",
+    icon: PenLine,
+    title: "Rédaction de shorts à haute rétention",
     description:
-      "JavaScript, Python, C++. Outils internes, automatisations et interfaces sur mesure pour la production.",
-  },
-  {
-    icon: Mic,
-    title: "Éloquence & Storytelling",
-    description:
-      "Construction narrative, prise de parole, structuration de discours et accompagnement éditorial.",
+      "Scripts courts pensés pour retenir l'attention : accroche dans les premières secondes, rythme serré, chute qui donne envie de revoir.",
   },
 ];
 
