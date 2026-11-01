@@ -15,7 +15,7 @@ export function Hero() {
           className="mb-6 sm:mb-8 inline-flex items-center gap-2 rounded-full border border-violet bg-white/[0.02] px-3 py-1 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-violet"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-violet animate-pulse" />
-          Video Editor & Developer
+          Monteur & Community Manager
         </motion.p>
 
         <h1 className="font-display text-[clamp(2rem,7vw,6rem)] font-bold leading-[1.02] tracking-tight text-white break-words">
