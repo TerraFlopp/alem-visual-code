@@ -23,10 +23,7 @@ async function fetchVideos() {
       platform: r.platform as VideoEmbed["platform"],
       embedUrl: r.embed_url,
     }));
-  return {
-    serious: map((data ?? []).filter((d) => d.category === "serious")),
-    creative: map((data ?? []).filter((d) => d.category === "creative")),
-  };
+  return map((data ?? []).filter((d) => d.category === "creative"));
 }
 
 function VideoCard({
