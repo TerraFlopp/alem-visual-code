@@ -38,7 +38,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.6 }}
             className="block text-white/60 mt-3 text-[clamp(1rem,3vw,2.25rem)] font-medium leading-tight"
           >
-            <span className="text-white/90">L'ingénierie technique</span>{" "}
+            <span className="text-white/90">La création de contenu</span>{" "}
             <span className="text-violet">au service</span>{" "}
             <span className="text-white/90">de l'impact visuel.</span>
           </motion.span>
@@ -50,9 +50,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.9 }}
           className="mt-6 sm:mt-8 max-w-2xl text-[13px] sm:text-sm md:text-[0.95rem] text-white/65 leading-relaxed font-light"
         >
-          Curieux depuis toujours, je suis un{" "}
-          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">passionné de technologie</span>{" "}
-          qui a fait du montage son terrain de jeu favori. J'aime explorer les outils, comprendre comment les choses fonctionnent en profondeur, puis transformer cette compréhension en contenus clairs, rythmés et impactants. Entre lignes de code, timelines et stratégies de marque, je cherche toujours le même équilibre&nbsp;: la rigueur technique au service d'une histoire qui se raconte bien.
+          <span className="text-[#ffd700] font-semibold drop-shadow-[0_0_8px_rgba(255,215,0,0.4)]">Passionné de création de contenu</span>, j'ai fait du montage mon terrain de jeu favori. Je transforme des idées en vidéos claires, rythmées et impactantes&nbsp;: de l'accroche à la dernière seconde, chaque cut est pensé pour retenir l'attention. Du brief à la post-production, je cherche toujours le même équilibre&nbsp;: une histoire qui se raconte bien et une image qui marque.
         </motion.p>
 
         <motion.p
