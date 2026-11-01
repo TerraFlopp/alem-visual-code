@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { supabase } from "@/integrations/supabase/client";
 import { SectionHeader } from "./Skills";
-import { Briefcase, Sparkles } from "lucide-react";
 
 type VideoEmbed = {
   id: string;
