@@ -82,7 +82,7 @@ export function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-violet bg-white/[0.02] p-6 md:p-8 glow-violet-hover"
+              className="group relative h-full overflow-hidden rounded-2xl border border-violet bg-white/[0.02] p-6 md:p-8 glow-violet-hover"
             >
               <div
                 aria-hidden
@@ -95,11 +95,11 @@ export function Testimonials() {
               />
               <div className="relative flex flex-col h-full">
                 <Quote className="h-6 w-6 text-violet/70" aria-hidden />
-                <p className="mt-4 text-base md:text-lg leading-relaxed text-white/85">
+                <p className="mt-4 mb-6 text-base md:text-lg leading-relaxed text-white/85">
                   « {item.quote} »
                 </p>
 
-                <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-5">
+                <div className="mt-auto flex items-center gap-4 border-t border-white/10 pt-5">
                   <Avatar item={item} />
                   <div className="min-w-0">
                     <p className="font-display text-sm font-semibold text-white truncate">
