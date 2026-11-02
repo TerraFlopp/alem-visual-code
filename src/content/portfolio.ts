@@ -7,7 +7,6 @@ export const personal = {
   subtitle:
     "Monteur & Community Manager\u00A0 je conçois des contenus qui combinent narration, rythme et stratégie de marque.",
   email: "terraprod.pro@gmail.com",
-  phone: "+33 6 12 18 32 56",
 };
 
 export type TrustItem =

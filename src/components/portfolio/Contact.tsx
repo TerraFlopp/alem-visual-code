@@ -57,28 +57,6 @@ export function Contact() {
             <ArrowUpRight className="h-4 w-4 text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </button>
 
-          {/* Bloc Téléphone : Copie au clic */}
-          <button
-            type="button"
-            onClick={() => handleCopy(personal.phone, "Numéro")}
-            className="group flex items-center justify-between gap-4 rounded-2xl border border-violet bg-white/[0.02] p-5 text-left glow-violet-hover focus-gold w-full"
-          >
-            <div className="flex items-center gap-4 min-w-0">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-violet text-violet">
-                <Phone className="h-5 w-5" />
-              </span>
-              <div className="min-w-0">
-                <p className="text-[10px] uppercase tracking-[0.25em] text-white/40">
-                  Téléphone
-                </p>
-                <p className="truncate text-sm font-medium text-white">
-                  {personal.phone}
-                </p>
-              </div>
-            </div>
-            <ArrowUpRight className="h-4 w-4 text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </button>
-
           {/* Bloc Discord : Copie au clic */}
           <button
             type="button"
