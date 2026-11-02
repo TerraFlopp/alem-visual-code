@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MessageCircle, ArrowUpRight } from "lucide-react";
+import { Mail, MessageCircle, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
 import { personal } from "@/content/portfolio";
 
@@ -34,7 +34,7 @@ export function Contact() {
         >
           Parlons de votre projet.
         </motion.h2>
-        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto">
+        <div className="mt-10 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-2xl mx-auto">
           {/* Bloc Email : Copie au clic */}
           <button
             type="button"
