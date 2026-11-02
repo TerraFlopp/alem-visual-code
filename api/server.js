@@ -2,7 +2,7 @@
 // The build output is a Cloudflare-style Worker that exports { fetch(Request) }.
 // We bridge Node's IncomingMessage/ServerResponse to the Web Fetch API that the
 // worker expects, then stream the Response back to Node.
-import handler from "../dist/server/index.js";
+import handler from "../dist/server/index.mjs";
 
 export const config = {
   runtime: "nodejs",
