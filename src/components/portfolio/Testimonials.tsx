@@ -95,7 +95,7 @@ export function Testimonials() {
               />
               <div className="relative flex flex-col h-full">
                 <Quote className="h-6 w-6 text-violet/70" aria-hidden />
-                <p className="mt-4 text-base md:text-lg leading-relaxed text-white/85">
+                <p className="mt-4 mb-6 text-base md:text-lg leading-relaxed text-white/85">
                   « {item.quote} »
                 </p>
 
